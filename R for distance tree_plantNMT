@@ -1,0 +1,12 @@
+install.packages("adegenet", dep=TRUE)
+install.packages("phangorn", dep=TRUE)
+library(ape)
+library(adegenet)
+library(phangorn)
+dna <- fasta2DNAbin(file="/Users/chenjunyan/downloads/shortplantNMTClustalw-aligned3.fasta")
+D <- dist.dna(dna, model="TN93")
+tre <- nj(D)
+tre <- ladderize(tre)
+plot(tre, cex=.6)
+title("plantnmt distance tree")
+
